@@ -1,7 +1,5 @@
 package org.rostik.andrusiv;
 
-import java.lang.Double;
-
 import com.google.gson.Gson;
 import org.apache.beam.sdk.Pipeline;
 import org.apache.beam.sdk.io.TextIO;
@@ -25,15 +23,15 @@ public class ReadMongo {
 
     public static void main(String[] args) {
 
-        SalesDetailsOptions options =
+        CustomOptions options =
                 PipelineOptionsFactory.fromArgs(args)
                         .withValidation()
-                        .as(SalesDetailsOptions.class);
+                        .as(CustomOptions.class);
 
         runProductDetails(options);
     }
 
-    public interface SalesDetailsOptions extends PipelineOptions {
+    public interface CustomOptions extends PipelineOptions {
 
         @Default.String("mongodb+srv://mongo:cNR2Q7ZtQ7WSDuBR@cluster0.klkb0yr.mongodb.net/mygrocerylist")
         String getUri();
@@ -47,7 +45,7 @@ public class ReadMongo {
         void setOutputFile(String value);
     }
 
-    static void runProductDetails(SalesDetailsOptions options) {
+    static void runProductDetails(CustomOptions options) {
 
         Pipeline p = Pipeline.create(options);
 
@@ -58,7 +56,7 @@ public class ReadMongo {
                 .apply(ParDo.of(new ConvertToJson()))
                 .apply(MapElements.via(new SimpleFunction<String, String>() {
                     @Override
-                    public String apply(String input){
+                    public String apply(String input) {
                         System.out.println("MongoDoc: " + input);
                         LOG.info("MongoDoc: " + input);
                         return input;
@@ -67,7 +65,6 @@ public class ReadMongo {
                 .apply("WriteSalesDetails", TextIO.write()
                         .to(options.getOutputFile())
                         .withSuffix(".txt"));
-
 
         p.run().waitUntilFinish();
     }
@@ -80,6 +77,4 @@ public class ReadMongo {
             receiver.output(elementString);
         }
     }
-
-
 }
