@@ -12,8 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class MongoToFirestoreDocument extends DoFn<Document, PersonFirestore> {
 
@@ -25,7 +23,6 @@ public class MongoToFirestoreDocument extends DoFn<Document, PersonFirestore> {
             GsonBuilder gsonBuilder = new GsonBuilder();
             gsonBuilder.registerTypeAdapter(LocalDateTime.class, new CustomLocalDateTimeDeserializer());
             this.gson =  gsonBuilder.setPrettyPrinting().create();
-//        this.gson = new Gson();
     }
 
     @ProcessElement
@@ -34,14 +31,14 @@ public class MongoToFirestoreDocument extends DoFn<Document, PersonFirestore> {
         if (null == doc || doc.values().isEmpty()){
             return;
         }
-        List<Class> classes = context.element().values().stream()
-                .map(Object::getClass)
-                .collect(Collectors.toList());
-        LOG.info("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS" + classes);
+//        List<Class> classes = context.element().values().stream()
+//                .map(Object::getClass)
+//                .collect(Collectors.toList());
+//        LOG.info("SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS" + classes);
 
         String personMongoJson = context.element().toJson();
-        LOG.error(personMongoJson);
-        LOG.error(gson.toString());
+        LOG.debug(personMongoJson);
+        LOG.debug(gson.toString());
 
         try {
             PersonMongo personMongo = gson.fromJson(personMongoJson, PersonMongo.class);

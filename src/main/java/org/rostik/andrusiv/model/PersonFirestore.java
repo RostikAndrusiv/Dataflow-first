@@ -1,7 +1,5 @@
 package org.rostik.andrusiv.model;
 
-
-import com.google.cloud.Date;
 import com.google.cloud.Timestamp;
 
 import java.io.Serializable;
@@ -9,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class PersonFirestore implements Serializable {
+
     private String id;
     private String name;
     private int age;

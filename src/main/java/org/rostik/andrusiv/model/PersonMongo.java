@@ -1,6 +1,5 @@
 package org.rostik.andrusiv.model;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 
@@ -11,25 +10,17 @@ import java.util.Objects;
 
 public class PersonMongo implements Serializable {
     @SerializedName("_id")
-    @Expose
     private String id;
-    @Expose
     private String name;
-    @Expose
     private int age;
-    @Expose
     private boolean isActive;
-    @Expose
     private double balance;
-    @Expose
     private List<String> phoneNumbers;
-    @Expose
     @BsonProperty("$date")
 //    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime dob;
 
     private Address address;
-
 
     public PersonMongo() {
     }

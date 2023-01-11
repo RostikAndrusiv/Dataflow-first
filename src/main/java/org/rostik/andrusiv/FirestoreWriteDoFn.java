@@ -1,6 +1,5 @@
 package org.rostik.andrusiv;
 
-import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.*;
 import org.apache.beam.sdk.options.PipelineOptions;
 import org.apache.beam.sdk.transforms.DoFn;
@@ -17,7 +16,7 @@ public class FirestoreWriteDoFn<In> extends DoFn<In, Void> {
     private static final Logger LOG = LoggerFactory.getLogger(PipelineWithMapping.class);
 
     private static final long serialVersionUID = 2L;
-    private transient List<PersonFirestore> mutations;
+    private transient List<PersonFirestore> personList;
 
     private transient Firestore db;
 
@@ -25,7 +24,7 @@ public class FirestoreWriteDoFn<In> extends DoFn<In, Void> {
     }
 
     @StartBundle
-    public void setupBufferedMutator(StartBundleContext startBundleContext) throws IOException {
+    public void setup(StartBundleContext startBundleContext) throws IOException {
 
         PipelineOptions pipelineOptions = startBundleContext.getPipelineOptions();
         JobOptions options = pipelineOptions.as(JobOptions.class);
@@ -35,23 +34,23 @@ public class FirestoreWriteDoFn<In> extends DoFn<In, Void> {
                 .setProjectId(options.getProjectName())
                 .build();
 
-        this.mutations = new ArrayList<>();
+        this.personList = new ArrayList<>();
         this.db = firestoreOptions.getService();
     }
 
     @ProcessElement
     public void processElement(ProcessContext context) throws Exception {
-        PersonFirestore mutation = (PersonFirestore) context.element();
-        mutations.add(mutation);
+        PersonFirestore person = (PersonFirestore) context.element();
+        personList.add(person);
 
         // Batch size set to 200, max size is 500
-        if (mutations.size() >= 200) {
+        if (personList.size() >= 200) {
             flushBatch(context.getPipelineOptions());
         }
     }
 
     private void flushBatch(PipelineOptions pipelineOptions) throws Exception {
-        if (mutations.isEmpty()) {
+        if (personList.isEmpty()) {
             return;
         }
         JobOptions options = pipelineOptions.as(JobOptions.class);
@@ -59,13 +58,13 @@ public class FirestoreWriteDoFn<In> extends DoFn<In, Void> {
         // Create batch to commit documents
         WriteBatch batch = db.batch();
 
-        for (PersonFirestore doc : mutations) {
+        for (PersonFirestore doc : personList) {
             DocumentReference docRef = db.collection(options.getOutputCollectionId()).document(doc.getId());
             batch.set(docRef, doc);
             processed.add(doc);
         }
-        ApiFuture<List<WriteResult>> wr = batch.commit();
-        mutations.removeAll(processed);
+        batch.commit();
+        personList.removeAll(processed);
     }
 
 

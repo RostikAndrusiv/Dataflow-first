@@ -1,6 +1,5 @@
 package org.rostik.andrusiv.util;
 
-import com.google.cloud.Date;
 import com.google.cloud.Timestamp;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -14,11 +13,11 @@ import java.time.ZoneId;
 @Mapper
 public interface PersonMapper {
     PersonMapper INSTANCE = Mappers.getMapper(PersonMapper.class);
-    @Mapping(source = "dob", target = "dob", qualifiedBy = LocalDateTimeToDate.class)
+    @Mapping(source = "dob", target = "dob", qualifiedBy = LocalDateTimeToTimestamp.class)
     PersonFirestore mapToFirestore(PersonMongo personMongo);
 
-    @LocalDateTimeToDate
-    static Timestamp LocalDateTimeToData(LocalDateTime localDateTime) {
+    @LocalDateTimeToTimestamp
+    static Timestamp LocalDateTimeToTimestamp(LocalDateTime localDateTime) {
         java.util.Date from = java.util.Date
                 .from(localDateTime.atZone(ZoneId.systemDefault())
                         .toInstant());

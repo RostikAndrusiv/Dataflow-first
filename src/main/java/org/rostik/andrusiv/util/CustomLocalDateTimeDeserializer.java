@@ -10,7 +10,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.TimeZone;
 
-//class LocalDateTimeDeserializer implements JsonDeserializer<LocalDateTime> {
+//class CustomLocalDateTimeDeserializer implements JsonDeserializer<LocalDateTime> {
 //    @Override
 //    public LocalDateTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
 //            throws JsonParseException {
