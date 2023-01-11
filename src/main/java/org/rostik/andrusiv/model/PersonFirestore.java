@@ -1,8 +1,12 @@
 package org.rostik.andrusiv.model;
 
+
+import com.google.cloud.Date;
+import com.google.cloud.Timestamp;
+
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class PersonFirestore implements Serializable {
     private String id;
@@ -11,13 +15,13 @@ public class PersonFirestore implements Serializable {
     private boolean isActive;
     private double balance;
     private List<String> phoneNumbers;
-    private Date dob;
+    private Timestamp dob;
     private Address address;
 
     public PersonFirestore() {
     }
 
-    public PersonFirestore(String id, String name, int age, boolean isActive, double balance, List<String> phoneNumbers, Date dob, Address address) {
+    public PersonFirestore(String id, String name, int age, boolean isActive, double balance, List<String> phoneNumbers, Timestamp dob, Address address) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -76,11 +80,11 @@ public class PersonFirestore implements Serializable {
         this.phoneNumbers = phoneNumbers;
     }
 
-    public Date getDob() {
+    public Timestamp getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(Timestamp dob) {
         this.dob = dob;
     }
 
@@ -90,6 +94,19 @@ public class PersonFirestore implements Serializable {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PersonFirestore that = (PersonFirestore) o;
+        return age == that.age && isActive == that.isActive && Double.compare(that.balance, balance) == 0 && Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(phoneNumbers, that.phoneNumbers) && Objects.equals(dob, that.dob) && Objects.equals(address, that.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, age, isActive, balance, phoneNumbers, dob, address);
     }
 
     @Override

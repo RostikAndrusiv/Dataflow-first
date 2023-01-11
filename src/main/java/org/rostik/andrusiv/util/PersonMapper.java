@@ -1,5 +1,7 @@
 package org.rostik.andrusiv.util;
 
+import com.google.cloud.Date;
+import com.google.cloud.Timestamp;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -8,7 +10,6 @@ import org.rostik.andrusiv.model.PersonMongo;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Date;
 
 @Mapper
 public interface PersonMapper {
@@ -17,9 +18,10 @@ public interface PersonMapper {
     PersonFirestore mapToFirestore(PersonMongo personMongo);
 
     @LocalDateTimeToDate
-    static Date LocalDateTimeToData(LocalDateTime localDateTime) {
-        return java.util.Date
+    static Timestamp LocalDateTimeToData(LocalDateTime localDateTime) {
+        java.util.Date from = java.util.Date
                 .from(localDateTime.atZone(ZoneId.systemDefault())
                         .toInstant());
+        return Timestamp.of(from);
     }
 }
