@@ -1,7 +1,6 @@
 package org.rostik.andrusiv;
 
 import org.apache.beam.sdk.options.Default;
-import org.apache.beam.sdk.options.Description;
 import org.apache.beam.sdk.options.PipelineOptions;
 
 public interface JobOptions extends PipelineOptions {
@@ -10,23 +9,24 @@ public interface JobOptions extends PipelineOptions {
     String getProjectName();
 
     void setProjectName(String value);
-    @Default.String("mongodb+srv://mongo:cNR2Q7ZtQ7WSDuBR@cluster0.klkb0yr.mongodb.net/mygrocerylist")
+
+    @Default.String("mongodb+srv://metalrulez:11235813@cluster0.difgez5.mongodb.net")
     String getUri();
 
     void setUri(String value);
 
-    @Default.String("grocery-items")
-    String getCollectionId();
+    @Default.String("testDb")
+    String getInputDbName();
 
-    void setCollectionId(String value);
+    void setInputDbName(String value);
 
-    @Default.String("mongodb://localhost:27017")
-    String getLocalUri();
-    void setLocalUri(String value);
+    @Default.String("Person")
+    String getInputCollectionId();
 
-    @Description("Path of the file to write to")
-    @Default.String("C:\\Mentoring\\dataflow\\output_data\\outputMongo")
-    String getOutputFile();
+    void setInputCollectionId(String value);
 
-    void setOutputFile(String value);
+    @Default.String("firestorePerson")
+    String getOutputCollectionId();
+
+    void setOutputCollectionId(String value);
 }
