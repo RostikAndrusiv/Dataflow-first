@@ -5,11 +5,10 @@ import org.apache.beam.sdk.io.mongodb.MongoDbIO;
 import org.apache.beam.sdk.options.PipelineOptionsFactory;
 import org.apache.beam.sdk.transforms.*;
 import org.bson.Document;
-import org.rostik.andrusiv.model.PersonFirestore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class PipelineWithSimpleMap {
+public class PipelineWithMyMap {
 
     private static final Logger LOG = LoggerFactory.getLogger(PipelineWithMapping.class);
 
@@ -39,9 +38,11 @@ public class PipelineWithSimpleMap {
                         return input;
                     }
                 }))
-//                .apply(ParDo.of(new MongoToFirestoreDocument()))
-                .apply(ParDo.of(new WriteMap<Document>()));
+                .apply(ParDo.of(new MapDocumentToMyDocument()))
+                .apply(ParDo.of(new WriteMyDocument<>()));
 
         p.run().waitUntilFinish();
     }
+
+
 }

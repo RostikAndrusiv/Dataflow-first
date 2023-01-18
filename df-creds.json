@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "phrasal-client-372213",
+  "private_key_id": "b021173e2248aa16d682405bedeaafd384bec282",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDQTUuxBptMwzPr\nPx4YgC+cUXBWuKoBsoUAY+k1sPBVfEcL3W5RD36Va/FEV7XwdKzE7Y50v84MbDFB\nF6HSds49njMqgicFCZgEhJww48GylCJl8s+VP2iInNG4p1Sv8U5wQKsmah3TRbao\n/YEMkQetLZy84B6EKNM/01RYZHPrih5ZadWpXztnC+NelRYSm2jjzvTzlBdbUpq0\nKa16Z/CVTyjIZveussB2lE+YWNjim52qH8aXKWgldpTKP06Mh7x7ueZKl4kGBYAT\naeNJAlaH8MJT+tPEvJL+Wg8tYMx7p1Cny4Igst4KErzzhQHLtCvWnBBV/FexOZ9G\nETsU6oN9AgMBAAECggEASxRxQd+FvodlgVeAu4gIoSlheoCZFn+IHPnmJyodllJz\nMT2g86rID4eWsPGEbKVBWMHfZQl1dVjR8Apak4erEt6gxqOe+NvaZVZ/DcgqGvn1\n5BU+6SavwP31Qb9ecQRjJ2bHydLZ6TrpecPV7fegcrVMF3AYz73/VrQPZMTgW3cI\nBZ56yrOuDTt5LeaTjFkv9xY2500kqCJZ8SjbRSUm/vPGGwmClRNdiJ3DY3fCmJ3I\n2lDIQlA5oiEfRpzB6P7gjhbOp4efJBUIsev7fVEZOmaX6TYyzdlFsV9oeIiloQio\n5tyy80rR2bn+Z0D4wEzeiDm/HeU+wXrdmI5bUdmpKQKBgQD9YjDmzX4UHb2GIkmy\n3FvwRk2SDUDxwt6ckvAvtpGhyh4jEaSCNFXWCICXvsZljTDvGjogyPeIJYqm1ueO\nIOwBDRLdyNjHQZR/Xi4PglFEsx9Alxsc8G3S0N/G2tIdrBwZRX03ATOPAZCVbsXT\n1Dg3s7M2qKDuyt36Eb/rNnerKwKBgQDSc+7o0g5FpIpExYUMWfAugabGeoOnwo5e\nt7QUKnDNuD1M6BLgTmg+uR9bgJW+j//U0R7GpwX7+lfPm90AiWyYM0rXtqDhwy6w\n/+rbXrCm5MtprlQ3L7sQbp6ynat3ERtPfdC73/4uGnp66MhIavMRn7AXY5KLDSNd\nujl4nXqX9wKBgQCOABFXx6H4tBIaseyLiGMd7MhcKYFT+9m19cMVekNzYEozbRe8\nwIe6Q1mNsSSOlOnvlcstxHK0ohVqGtX6GQkqLaF9GaojQOVv2+AEYQwabCf/kq9n\nMHbbxqMiVk+awXGd2AusX8f9ROs6U7IaXLyEuvickTRfnuF326qqrwOxsQKBgBBZ\n+aIVUA6RLj0Rq7i99C9o23BobHpIX490boVylrklK34iOfU7olXdRFZzsy7POW1r\nohyFNa3SUahLz+wOwWVB9vqzseRYqfQOrkzFGqyc8kEPznNLPhmUvrfaEEx8A8c1\nW1Z9nN4wKHwMQiN+S8x+v8vRbL1pE+pgYb7BXZkZAoGABwvs23YwHwqv2U6eGgK9\nQuyTPRRaxUle+/ZXwrO8+7r57K3OXldsXVdQDmkYgeN7kqND50PswIKtfGVaFGce\n517FNtZW9GD1JDZFEDtzl3DO/1EIzaDgZBpqquQ7grxSCMQUgICFZOZtSIDYvpeO\nfBJEMVb8ligTe/HvgbXMYUM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "dataflow-service-account@phrasal-client-372213.iam.gserviceaccount.com",
+  "client_id": "103313803063259165445",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dataflow-service-account%40phrasal-client-372213.iam.gserviceaccount.com"
+}
