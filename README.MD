@@ -5,10 +5,10 @@ to run PipelineWithSelectById place idss.txt to your bucket. Verify getters in J
 commandline args:
 
 mvn -Pdataflow-runner compile exec:java \
--Dexec.mainClass=org.loony.dataflow.<Pipeline> \
--Dexec.args="--<ProjectName> \
+-Dexec.mainClass=org.rostik.andrusiv.{PipelineName} \
+-Dexec.args="--{ProjectName} \
 --runner=DataflowRunner \
 --region=us-central1 \
---tempLocation=gs://<Your Bucket>/temp/ \
+--tempLocation=gs://{Your Bucket}/temp/ \
 --numWorkers=1 \
 --maxNumWorkers=2" 
