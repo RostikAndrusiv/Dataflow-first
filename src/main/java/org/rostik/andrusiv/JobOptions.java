@@ -29,4 +29,15 @@ public interface JobOptions extends PipelineOptions {
     String getOutputCollectionId();
 
     void setOutputCollectionId(String value);
+
+
+    @Default.String("my-first-dataflow-bucket")
+    String getIdBucket();
+
+    void setIdBucket(String value);
+
+    @Default.String("idss.txt")
+    String getIdFileName();
+
+    void setIdFileName(String value);
 }
